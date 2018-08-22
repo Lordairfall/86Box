@@ -48,6 +48,11 @@
 #include "vid_incolor.h"
 #include "vid_colorplus.h"
 #include "vid_mda.h"
+#ifdef DEV_BRANCH
+# ifdef USE_RIVA
+#  include "vid_nvidia.h"
+# endif
+#endif
 #include "vid_oak_oti.h"
 #include "vid_paradise.h"
 #include "vid_s3.h"
@@ -172,6 +177,11 @@ video_cards[] = {
     {"[VLB] S3 ViRGE/DX (VBE 2.0)",			"virge375_vbe20_vlb",	&s3_virge_375_4_vlb_device,		GFX_VIRGEDX4_VLB,		VIDEO_FLAG_TYPE_SPECIAL, {VIDEO_BUS, 2,  2,  3,  28, 28, 45}},
     {"[VLB] Trident TGUI9400CXi",			"tgui9400cxi_vlb",	&tgui9400cxi_device,			GFX_TGUI9400CXI,		VIDEO_FLAG_TYPE_SPECIAL, {VIDEO_BUS, 4,  8, 16,   4,  8, 16}},
     {"[VLB] Trident TGUI9440",				"tgui9440_vlb",		&tgui9440_vlb_device,			GFX_TGUI9440_VLB,		VIDEO_FLAG_TYPE_SPECIAL, {VIDEO_BUS, 4,  8, 16,   4,  8, 16}},
+#if defined(DEV_BRANCH) && defined(USE_RIVA)
+    {"[PCI] nVidia RIVA 128",				"riva128",		&riva128_device,			GFX_RIVA128,			VIDEO_FLAG_TYPE_SPECIAL, {VIDEO_BUS, 2,  2,  3,  24, 24, 36}},
+    {"[PCI] nVidia RIVA TNT",				"rivatnt",		&rivatnt_device,			GFX_RIVATNT,			VIDEO_FLAG_TYPE_SPECIAL, {VIDEO_BUS, 2,  2,  3,  24, 24, 36}},
+    {"[PCI] nVidia RIVA TNT2",				"rivatnt2",		&rivatnt2_device,			GFX_RIVATNT2,			VIDEO_FLAG_TYPE_SPECIAL, {VIDEO_BUS, 2,  2,  3,  24, 24, 36}},
+#endif
     {"",						"",			NULL,                        		-1				}
 };
 

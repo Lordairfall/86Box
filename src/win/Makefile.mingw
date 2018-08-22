@@ -53,6 +53,9 @@ ifeq ($(DEV_BUILD), y)
  ifndef MRTHOR
   MRTHOR	:= y
  endif
+ ifndef NV_RIVA
+  NV_RIVA	:= y
+ endif
  ifndef PAS16
   PAS16		:= y
  endif
@@ -92,6 +95,9 @@ else
  endif
  ifndef MRTHOR
   MRTHOR	:= n
+ endif
+ ifndef NV_RIVA
+  NV_RIVA	:= n
  endif
  ifndef PAS16
   PAS16		:= n
@@ -368,6 +374,11 @@ endif
 
 ifeq ($(MRTHOR), y)
 OPTS		+= -DUSE_MRTHOR
+endif
+
+ifeq ($(NV_RIVA), y)
+OPTS		+= -DUSE_RIVA
+DEVBROBJ	+= vid_nvidia.o
 endif
 
 ifeq ($(PAS16), y)
